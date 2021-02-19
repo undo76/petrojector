@@ -1,15 +1,29 @@
 type Language = "en" | "fr" | "es";
 type Html = string;
 
+type Translations = { [lang in Language]: { [p: string]: Html } };
+const translations: Translations = {
+    "en": {
+        "welcome": "Welcome!",
+    },
+    "fr": {
+        "welcome": "Bienvenue!",
+    },
+    "es": {
+        "welcome": "¡Bienvenido!",
+    }
+};
+
 /* Components */
 
 // Simulate a service for current language using a closure
 // instead of a global to preserve encapsulation
 function languageService(
-  defaultLanguage: Language
+  defaultLanguage: Language,
+  translations: Translations
 ): [(key: string) => string, () => Language, (lang: Language) => void] {
   let currentLanguage: Language = defaultLanguage;
-  const translate = (key: string) => `$$${key}_${currentLanguage}$$`;
+  const translate = (key: string) => `${translations[currentLanguage][key]}`;
   const getter = () => currentLanguage;
   const setter = (lang: Language) => {
     currentLanguage = lang;
@@ -18,7 +32,8 @@ function languageService(
 }
 
 const [translate, getCurrentLanguage, setCurrentLanguage] = languageService(
-  "en"
+  "en",
+    translations
 );
 
 function message(key: string, lang: Language): Html {
