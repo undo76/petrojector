@@ -3,15 +3,15 @@ type Html = string;
 
 type Translations = { [lang in Language]: { [key: string]: Html } };
 const translations: Translations = {
-    "en": {
-        "welcome": "Welcome!",
-    },
-    "fr": {
-        "welcome": "Bienvenue!",
-    },
-    "es": {
-        "welcome": "¡Bienvenido!",
-    }
+  en: {
+    welcome: "Welcome!",
+  },
+  fr: {
+    welcome: "Bienvenue!",
+  },
+  es: {
+    welcome: "¡Bienvenido!",
+  },
 };
 
 /* Components */
@@ -33,7 +33,7 @@ function languageService(
 
 const [translate, getCurrentLanguage, setCurrentLanguage] = languageService(
   "en",
-    translations
+  translations
 );
 
 function message(key: string, lang: Language): Html {
