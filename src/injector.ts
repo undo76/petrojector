@@ -1,7 +1,7 @@
 type Language = "en" | "fr" | "es";
 type Html = string;
 
-type Translations = { [lang in Language]: { [p: string]: Html } };
+type Translations = { [lang in Language]: { [key: string]: Html } };
 const translations: Translations = {
     "en": {
         "welcome": "Welcome!",
