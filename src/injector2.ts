@@ -64,7 +64,7 @@ const PageTemplate = inject(Page, {
 });
 
 // This doesn't work, as it needs "content" to be filled in too.
-// const out = AppTemplate({});
+// const out = PageTemplate({});
 // console.log(out);
 
 // Add content
